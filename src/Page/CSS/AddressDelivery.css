@@ -1,0 +1,203 @@
+.address-location {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 170px 50px;
+}
+
+.location-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.location-banner img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+/* Общий контейнер с рамкой для карты и списка */
+.location-content-wrapper {
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Контейнер для карты и списка */
+.location-content {
+  display: flex;
+  gap: 30px;
+}
+
+/* Список пунктов выдачи */
+.location-list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.location-list .delivery-tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.location-list .delivery-tabs button {
+  flex: 1;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.location-list .delivery-tabs button.active {
+  background-color: #EAE4FF;
+  border: 1px solid #9a0bbabe;
+}
+
+.location-list .delivery-tabs button:hover {
+  background-color: #EAE4FF;
+  border: 1px solid #9a0bbabe;
+}
+
+.location-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 40px;
+}
+
+.location-list li {
+  cursor: pointer;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.location-list li:hover {
+  background-color: #e0e0e0;
+}
+
+/* Карта */
+.location-map {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 850px;
+  height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+  .location-content-wrapper {
+    padding: 15px;
+  }
+
+  .location-list .delivery-tabs button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .map-container {
+    height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .address-location {
+    margin: 130px 20px;
+  }
+  .location-banner{
+    gap: 10px;
+  }
+  .location-banner h2{
+    font-size: 18px;
+  }
+  .location-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .location-list {
+    width: 100%;
+  }
+
+  .location-list .delivery-tabs button {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .location-list ul {
+    display: none;
+  }
+
+  .map-container {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+@media (max-width: 500px) {
+  .address-location {
+    margin: 110px 15px;
+  }
+  .location-content-wrapper {
+    padding: 10px;
+  }
+  .location-list .delivery-tabs button {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+  .map-container {
+    height: 250px;
+  }
+}
+
+@media (max-width: 440px) {
+  .location-content-wrapper {
+    padding: 8px;
+  }
+
+  .location-list .delivery-tabs button {
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+  .map-container {
+    height: 230px;
+  }
+}
+
+@media (max-width: 361px) {
+  .address-location {
+    margin: 110px 5px;
+  }
+  .location-banner h2{
+    font-size: 14px;
+  }
+  .location-content-wrapper {
+    padding: 5px;
+  }
+
+  .location-list .delivery-tabs button {
+    font-size: 11px;
+    padding: 7px 8px;
+  }
+  .map-container {
+    height: 200px;
+  }
+}

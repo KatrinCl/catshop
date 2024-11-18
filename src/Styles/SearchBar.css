@@ -1,0 +1,89 @@
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.search-input {
+    padding: 10px;
+    font-size: 16px;
+    flex: 1;
+    height: 50px;
+    margin-right: 4px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+}
+
+.search-button {
+    padding: 10px 15px;
+    height: 50px;
+    font-size: 16px;
+    background-color: #ba76a7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 1280px) {
+    .search-form {
+        max-width: 80%;
+    }
+
+    .search-input {
+        font-size: 14px;
+    }
+
+    .search-button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-form {
+        align-items: stretch;
+        max-width: 55%;
+    }
+
+    .search-input {
+        font-size: 16px;
+        height: 45px;
+    }
+
+    .search-button {
+        height: 45px;
+    }
+}
+
+@media (max-width: 500px) {
+    .search-form {
+        max-width: 60%;
+    }
+
+    .search-input {
+        font-size: 14px;
+        height: 40px;
+        padding: 8px;
+    }
+
+    .search-button {
+        font-size: 14px;
+        height: 40px;
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 440px) {
+    .search-form {
+        max-width: 55%;
+    }
+
+    .search-button {
+        display: none;
+    }
+
+}

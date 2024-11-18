@@ -1,0 +1,158 @@
+.item {
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.item img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+}
+
+.item p {
+    margin: 6px 0;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+}
+
+.item-prices {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.item-price-new {
+    color: rgba(244, 92, 92, 0.978);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.item-price-old {
+    color: #8c8c8c;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: line-through;
+}
+
+.addCart {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.addCart button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    padding: 15px 40px;
+    font-size: 16px;
+    font-weight: 550;
+    color: white;
+    background: #9a0bbabe;
+    margin-bottom: 40px;
+    border: 1px solid #aaa;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+}
+
+.addCart img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+@media(max-width: 1280px) {
+    .item img {
+        height: 220px; /* Уменьшаем высоту изображения */
+    }
+
+    .item p {
+        font-size: 15px;
+    }
+
+    .addCart button {
+        font-size: 15px;
+        padding: 12px 30px;
+    }
+}
+
+@media(max-width: 768px) {
+    .item img {
+        height: 200px;
+    }
+
+    .item p {
+        font-size: 14px;
+    }
+
+    .addCart button {
+        font-size: 14px;
+        padding: 10px 25px;
+    }
+    .item-price-new {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    
+    .item-price-old {
+        font-size: 16px;
+        font-weight: 500;
+    }    
+}
+
+@media(max-width: 500px) {
+    .item{
+        padding: 0 10px;
+    }
+    .item img {
+        height: 180px;
+    }
+
+    .item p {
+        font-size: 13px;
+    }
+
+    .addCart button {
+        font-size: 13px;
+        padding: 8px 20px;
+    }
+}
+
+@media(max-width: 440px) {
+    .item img {
+        height: 160px;
+    }
+
+    .item p {
+        font-size: 12px;
+    }
+
+    .addCart button {
+        font-size: 12px;
+        padding: 6px 15px;
+    }
+}
+
+@media(max-width: 361px) {
+    .item img {
+        height: 120px;
+    }
+
+    .item p {
+        font-size: 11px;
+    }
+
+    .addCart button {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+}

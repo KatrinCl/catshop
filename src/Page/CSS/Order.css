@@ -1,0 +1,201 @@
+.order{
+    display: flex;
+    position: relative;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    width: 100%;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.order-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 160px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+  .order-pickup, .order-payment, .wallet-discount, .order-summary, .order-button {
+    margin-bottom: 20px;
+  }
+  
+  .order-pickup h3, .order-payment h3, .order-summary h3 {
+    margin-bottom: 10px;
+  }
+  
+  .pickup-methods button, .payment-options button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .pickup-methods .active, .payment-options .active {
+    background-color: #EAE4FF;
+    border: 1px solid #9a0bbabe;
+  }
+  
+  .pickup-address p, .delivery-date p {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  .delivery-free {
+    color: green;
+    font-weight: bold;
+  }
+
+  .fee{
+    color: green;
+  }
+  
+  .wallet-discount {
+    background-color: #f8f4ff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #6b2aee;
+  }
+  
+  .order-summary p {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  .order-summary span {
+    font-weight: bold;
+  }
+  
+  .order-button button {
+    background-color: #FF6600;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .order-button button:hover {
+    background-color: #e55d00;
+  }
+  
+  @media (max-width: 1280px) {
+    .order-form {
+      width: 60%;
+      margin-top: 150px;
+      padding: 15px;
+    }
+  
+    .pickup-methods button, .payment-options button {
+      padding: 8px 18px;
+      font-size: 14px;
+    }
+  
+    .order-summary p {
+      font-size: 14px;
+    }
+  
+    .order-button button {
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .order {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+  
+    .order-form {
+      width: 80%;
+      margin-top: 130px;
+      padding: 10px;
+    }
+  
+    .pickup-methods button, .payment-options button {
+      padding: 6px 16px;
+      font-size: 14px;
+    }
+  
+    .order-summary p {
+      font-size: 14px;
+    }
+  
+    .order-button button {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .order-form {
+      width: 90%;
+      margin-top: 100px;
+      padding: 10px;
+    }
+    .pickup-address p{
+      font-size: 14px;
+    }
+    .order-pickup{
+      margin-bottom: 10px;
+    }
+    .pickup-methods button, .payment-options button {
+      padding: 5px 14px;
+    }
+    
+    .order-button button {
+      padding: 8px;
+    }
+  }
+  
+  @media (max-width: 440px) {
+    .order-form {
+      width: 100%;
+      padding: 8px;
+    }
+  
+    .pickup-methods button, .payment-options button {
+      padding: 4px 12px;
+    }
+  
+    .order-button button {
+      padding: 6px;
+    }
+  }
+  
+  @media (max-width: 361px) {
+    .order-form {
+      padding: 5px;
+    }
+  
+    .pickup-methods button, .payment-options button {
+      padding: 3px 10px;
+      font-size: 14px;
+    }
+  
+    .order-summary p {
+      font-size: 14px;
+    }
+  
+    .order-button button {
+      font-size: 14px;
+      padding: 4px;
+    }
+    .pickup-address p{
+      font-size: 14px;
+    }
+  }
+  

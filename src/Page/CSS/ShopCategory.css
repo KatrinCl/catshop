@@ -1,0 +1,212 @@
+.shop-category {
+    margin-top: 190px;
+    width: 100%;
+}
+
+.shopcategory-filters-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0 60px;
+    flex-wrap: wrap;
+}
+
+/* Dropdown adjustments */
+.shopcategory-dropdown {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 1px solid #888;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.shopcategory-dropdown img {
+    margin-left: 10px;
+    width: 12px;
+    height: 12px;
+}
+
+/* Menu visibility on hover */
+.shopcategory-dropdown:hover .shopcategory-dropdown-menu {
+    display: block;
+}
+
+.shopcategory-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    list-style: none;
+    min-width: 150px;
+}
+
+.shopcategory-dropdown-menu li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.shopcategory-dropdown-menu li:hover {
+    background-color: #f1f1f1;
+}
+
+/* Price dropdown adjustments */
+.shopcategory-price-dropdown {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.shopcategory-price-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.shopcategory-price-inputs div {
+    display: flex;
+    flex-direction: column;
+}
+
+.shopcategory-price-inputs label {
+    font-size: 12px;
+    color: gray;
+    margin-bottom: 5px;
+}
+
+.shopcategory-price-inputs input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100px;
+}
+
+.shopcategory-price-dropdown button {
+    width: 100%;
+    padding: 10px;
+    background-color: #9d42ea;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.shopcategory-price-dropdown button:hover {
+    background-color: #9e42eabb;
+}
+
+/* Products grid */
+.shopcategory-products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-top: 50px;
+    padding: 0 50px;
+}
+
+@media(max-width: 1280px) {
+    .shopcategory-products {
+        grid-template-columns: repeat(4, 1fr);
+        width: 90%;
+        margin: 10px auto;
+    }
+}
+
+@media(max-width: 768px) {
+    .shop-category{
+        margin-top: 150px;
+    }
+    .shopcategory-products {
+        grid-template-columns: repeat(3, 1fr);
+        width: 95%;
+        gap: 30px;
+    }
+    .shopcategory-dropdown {
+        margin-left: 10px;
+        font-size: 14px;
+        padding: 10px 10px;
+    }
+    
+    .shopcategory-dropdown img {
+        margin-left: 7px;
+    }    
+}
+
+@media(max-width: 500px) {
+    .shop-category{
+        margin-top: 120px;
+    }
+    .shopcategory-products {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 20px;
+    }
+
+    .shopcategory-filters-container {
+        gap: 5px;
+        padding: 0 10px;
+    }
+    .shopcategory-dropdown {
+        padding: 7px 10px;
+        font-size: 14px;
+        margin-left: 30px;
+    }
+}
+
+@media(max-width: 440px) {
+    .shop-category{
+        margin-top: 110px;
+    }
+
+    .shopcategory-products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .shopcategory-filters-container {
+        gap: 1px;
+        padding: 0 8px;
+    }
+
+    .shopcategory-dropdown {
+        padding: 7px 10px;
+        font-size: 12px;
+        margin-left: 20px;
+    }
+}
+
+@media(max-width: 361px) {
+    .shopcategory-products {
+        gap: 10px;
+        padding: 0 5px;
+    }
+
+    .shopcategory-filters-container {
+        gap: 0px;
+        padding: 0 2px;
+    }
+
+    .shopcategory-dropdown {
+        font-size: 12px;
+    }
+    .shopcategory-dropdown img {
+        width: 10px;
+        height: 10px;
+        margin-left: 3px;
+    }    
+}

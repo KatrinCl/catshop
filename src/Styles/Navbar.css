@@ -1,0 +1,378 @@
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: url(/2.webp) no-repeat;
+    background-size: cover;
+    height: 150px;
+    z-index: 15;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.logo {
+    width: 120px;
+    height: 70px;
+}
+
+.nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+    list-style: none;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.nav ul li {
+    display: flex;
+    padding-top: 35px;
+    align-items: center;
+}
+
+.cartI, .user, .location {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.menu1 {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+.cartI {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: relative; /* Устанавливаем относительное позиционирование для контейнера иконки */
+}
+
+.cart-count {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 14px;
+    background: red;
+    color: white;
+    position: absolute;
+    top: 55px;
+    right: 172px; 
+}
+
+.nav-pickup-address{
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.dropdown {
+    position: absolute;
+    top: 150px;
+    right: 0;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 532px;
+    overflow-y: auto;
+}
+
+.dropdown ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown ul li {
+    font-size: 17px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown ul li img {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+
+.dropdown ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.dropdown ul li:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.dropdown::-webkit-scrollbar {
+    width: 7px;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.dropdown::-webkit-scrollbar-track {
+    background-color: #f1f1f12d;
+}
+
+.main-content {
+    padding-top: 160px; /* Отступ для компенсации высоты Navbar */
+}
+.bottom-nav{
+    display: none;
+}
+
+@media (max-width: 1280px) {
+    .nav-top {
+        padding: 15px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 60px;
+    }
+
+    .nav ul {
+        gap: 25px;
+        font-size: 18px;
+    }
+
+    .user, .location {
+        width: 28px;
+        height: 28px;
+    }
+
+    .cartI {
+        width: 40px;
+        height: 40px;
+    }    
+
+    .cart-count {
+        font-size: 13px;
+        top: 50px;
+        right: 142px;     
+    }
+
+    .dropdown {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        height: 120px;
+    }
+
+    .nav-top {
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .logo {
+        width: 80px;
+        height: 50px;
+        margin-top: 20px;
+    }
+
+    .nav ul {
+        gap: 15px;
+        font-size: 16px;
+    }
+
+    .user, .location, .menu1 {
+        width: 35px;
+        height: 35px;
+    }
+
+    .cart-count {
+        top: 40px;
+        right: 115px;
+        font-size: 12px;
+    }
+
+    .nav-pickup-address {
+        font-size: 14px;
+        top: 10px;
+        right: 20px;
+    }
+
+    .dropdown {
+        width: 100%;
+        top: 100px;
+    }
+}
+
+@media (max-width: 500px) {
+    .nav {
+        height: 100px;
+    }
+
+    .nav-top {
+        align-items: flex-start;
+        padding: 5px;
+    }
+    .nav ul {
+        gap: 10px;
+        font-size: 16px;
+    }
+
+    .logo {
+        width: 60px;
+        height: 40px;
+    }
+
+    .location {
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+    }
+
+    .cart-count {
+        display: none;
+    }
+
+    .nav-pickup-address {
+        font-size: 12px;
+        right: 10px;
+    }
+
+    .dropdown {
+        width: 100%;
+        top: 80px;
+    }
+
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+
+    .bottom-nav-icon {
+        width: 30px;
+        height: 30px;
+        color: #ba76a7; /* Цвет иконок */
+    }
+
+    /* Скрываем иконки корзины и профиля в верхней панели на экранах до 500px */
+    .nav .cartI, .nav .user {
+        display: none;
+    }
+    .cart-count1 {
+        width: 18px;
+        height: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-size: 12px;
+        background: red;
+        color: white;
+        position: absolute;
+        bottom: 30px;
+        right: 320px; 
+    }    
+
+}
+
+@media (max-width: 440px) {
+    .nav ul {
+        gap: 0px;
+        margin-top: -2px;
+    }
+
+    .logo {
+        width: 60px;
+        height: 40px;
+    }
+
+    .location {
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+        margin-left: 10px;
+    }
+
+    .cart-count {
+        display: none;
+    }
+
+    .nav-pickup-address {
+        font-size: 12px;
+        right: 10px;
+    }
+
+    .dropdown {
+        width: 100%;
+        top: 80px;
+    }
+
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+
+    .bottom-nav-icon {
+        width: 30px;
+        height: 30px;
+        color: #ba76a7; /* Цвет иконок */
+    }
+    .cart-count1 {
+        right: 285px; 
+    }    
+
+}
+
+@media (max-width: 361px) {
+    .cart-count1 {
+        right: 235px; 
+    }    
+    .location {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+        margin-left: 10px;
+    }
+}
