@@ -3,6 +3,12 @@ import './../Styles/Navbar.css';
 import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../Context/ShopContext';
+import cat from '/cat.svg'
+import user from '/user.svg'
+import cart from '/cart.svg'
+import location from '/location.svg'
+import menu from '/menu.svg'
+
 
 const Navbar = () => {
     const [menu, setMenu] = useState(false);
@@ -17,23 +23,23 @@ const Navbar = () => {
     return (
         <div className='nav'>
             <div className='nav-top'>
-                <Link to='/'><img src="/cat.svg" alt="" className='logo' /></Link>
+                <Link to='/'><img src={cat} alt="" className='logo' /></Link>
                 <SearchBar />
                 <ul>
                     <li>
-                        <Link to='/login'><img src='/user.svg' alt='' className='user' /></Link>
+                        <Link to='/login'><img src={user} alt='' className='user' /></Link>
                     </li>
                     <li>
-                        <Link to='/cart'><img src='/cart.svg' alt='' className='cartI' /><span className='cart-count'>{getTotalCartItems()}</span></Link>
+                        <Link to='/cart'><img src={cart} alt='' className='cartI' /><span className='cart-count'>{getTotalCartItems()}</span></Link>
                     </li>
                     <li>
                         <Link to='/addressdelivery'>
                             <div className='active'>
-                                <img src='/location.svg' alt='' className='location' />
+                                <img src={location} alt='' className='location' />
                             </div>
                         </Link>
                     </li>
-                    <li><img src='/menu.svg' alt='' className='menu1' onClick={toggleMenu} /></li>
+                    <li><img src={menu} alt='' className='menu1' onClick={toggleMenu} /></li>
                 </ul>
             </div>
             {menu && (
