@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import './CSS/ShopCategory.css';
 import { ShopContext } from '../Context/ShopContext.jsx';
 import Item from '../Components/Item.jsx';
+import dropdown from '/dropdown_icon.png'
 
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext);
@@ -79,7 +80,7 @@ const ShopCategory = (props) => {
           onMouseEnter={() => setShowSortDropdown(true)}
           onMouseLeave={() => setShowSortDropdown(false)}
         >
-          <span>{sortOption}</span> <img src='/dropdown_icon.png' alt='' />
+          <span>{sortOption}</span> <img src={dropdown} alt='' />
           {showSortDropdown && (
             <ul className="shopcategory-dropdown-menu">
               <li onClick={() => { setSortOption('По популярности'); setShowSortDropdown(false); }}>
@@ -110,7 +111,7 @@ const ShopCategory = (props) => {
           onMouseEnter={() => setShowPriceDropdown(true)}
           onMouseLeave={() => setShowPriceDropdown(false)}
         >
-          <span>Цена, ₽</span> <img src='/dropdown_icon.png' alt='' />
+          <span>Цена, ₽</span> <img src={dropdown} alt='' />
           {showPriceDropdown && (
             <div className="shopcategory-price-dropdown">
               <div className="shopcategory-price-inputs">
@@ -144,7 +145,7 @@ const ShopCategory = (props) => {
           onMouseEnter={() => setShowColorDropdown(true)}
           onMouseLeave={() => setShowColorDropdown(false)}
         >
-          <span>{colorOption}</span> <img src='/dropdown_icon.png' alt='' />
+          <span>{colorOption}</span> <img src={dropdown} alt='' />
           {showColorDropdown && (
             <ul className="shopcategory-dropdown-menu">
               <li onClick={() => { setColorOption('Красный'); setShowColorDropdown(false); }}>

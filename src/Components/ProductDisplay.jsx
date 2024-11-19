@@ -2,6 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import '../Styles/ProductDisplay.css';
 import { ShopContext } from '../Context/ShopContext';
 import { Link } from 'react-router-dom';
+import star from '/star_icon.png';
+import starh from '/star_dull_icon.png';
+import repeat from "/arrows-repeat.svg";
+import tag from "/tag.svg";
+import purse from '/purse1.svg';
 
 const ProductDisplay = (props) => {
     const { product } = props;
@@ -82,7 +87,7 @@ const ProductDisplay = (props) => {
 
                 <div className='prices-add-up'>
                     <div className='price-up'>
-                        <img src='/purse1.svg' alt='' />
+                        <img src={purse} alt='' />
                         <div className="productdisplay-right-price-new">{product.new_price} ₽</div>
                         <div className="productdisplay-right-price-old">{product.old_price} ₽</div>
                     </div>
@@ -106,11 +111,11 @@ const ProductDisplay = (props) => {
                 <div className='p-right'>
                     <h1>{product.name}</h1>
                     <div className="productdisplay-right-stars">
-                        <img src='/star_icon.png' alt="звезда" />
-                        <img src='/star_icon.png' alt="звезда" />
-                        <img src='/star_icon.png' alt="звезда" />
-                        <img src='/star_icon.png' alt="звезда" />
-                        <img src='/star_dull_icon.png' alt="звезда" />
+                        <img src={star} alt="звезда" />
+                        <img src={star} alt="звезда" />
+                        <img src={star} alt="звезда" />
+                        <img src={star} alt="звезда" />
+                        <img src={starh} alt="звезда" />
                     </div>
 
                     {/* Опции цветов с мини изображениями */}
@@ -258,8 +263,8 @@ const ProductDisplay = (props) => {
                     </div>
 
                     <div className='desc2'>
-                        <p><img src="/arrows-repeat.svg" alt="" /> 14 дней на возврат</p>
-                        <p><img src="/tag.svg" alt="" /> Примерка</p>
+                        <p><img src={repeat} alt="" /> 14 дней на возврат</p>
+                        <p><img src={tag} alt="" /> Примерка</p>
                     </div>
                 </div>
 
@@ -283,7 +288,8 @@ const ProductDisplay = (props) => {
                             </>
                         )}
                     </button>
-                </div>            </div>
+                </div>
+            </div>
         </div>
     );
 }

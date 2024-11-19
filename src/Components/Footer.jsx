@@ -1,5 +1,6 @@
 import React from 'react';
 import './../Styles/Footer.css';
+import code from '/qr-code.png'
 
 const Footer = () => {
   return (
@@ -42,7 +43,7 @@ const Footer = () => {
         </div>
         <div className="footer-section">
           <h3>QR код</h3>
-          <img src="qr-code.png" alt="QR код" className="qr-code" />
+          <img src={code} alt="QR код" className="qr-code" />
         </div>
       </div>
       <div className="footer-bottom">

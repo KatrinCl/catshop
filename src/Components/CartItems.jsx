@@ -2,6 +2,9 @@ import React, { useContext, useState } from 'react';
 import './../Styles/CartItems.css';
 import { ShopContext } from '../Context/ShopContext';
 import { Link } from 'react-router-dom';
+import minus from '/minus.svg';
+import plus from '/plus.svg';
+import bin from '/bin.svg';
 
 const CartItems = () => {
 
@@ -88,14 +91,14 @@ const CartItems = () => {
                   <div className='cartitems-left'>
 
                     <div className='img-counter'>
-                      <img className='minus' src='/minus.svg' alt='' onClick={() => decreaseQuantity(e.id)} />
+                      <img className='minus' src={minus} alt='' onClick={() => decreaseQuantity(e.id)} />
                       <button className='cartitems-quantity'>{cartItems[e.id]}</button>
-                      <img className='plus' src='/plus.svg' alt='' onClick={() => increaseQuantity(e.id)} />
+                      <img className='plus' src={plus} alt='' onClick={() => increaseQuantity(e.id)} />
                     </div>
 
                     <div className='img-left'>
                       <p>{e.new_price * cartItems[e.id]} ₽</p>
-                      <img className='cartitems-remove-icon' src='/bin.svg' onClick={() => removeFromCart(e.id)} alt="" />
+                      <img className='cartitems-remove-icon' src={bin} onClick={() => removeFromCart(e.id)} alt="" />
                     </div>
                   </div>
                 </div>

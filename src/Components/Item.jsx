@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import './../Styles/Item.css';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../Context/ShopContext';
+import cart from '/cart.svg';
 
 const Item = (props) => {
   const { increaseQuantity } = useContext(ShopContext);
@@ -37,7 +38,7 @@ const Item = (props) => {
             </Link>
           ) : (
             <>
-              <img src='/cart.svg' alt='cart' /> В корзину
+              <img src={cart} alt='cart' /> В корзину
             </>
           )}
         </button>

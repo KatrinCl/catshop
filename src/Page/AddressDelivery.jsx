@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { YMaps, Map, Placemark, SearchControl } from 'react-yandex-maps';
 import './CSS/AddressDelivery.css';
+import wb from '/wb.png';
 
 const AddressDelivery = () => {
 
@@ -23,7 +24,7 @@ const AddressDelivery = () => {
     <div className='address-location'>
       <div className='location-banner'>
         <h2>Доставка</h2>
-        <img src='/wb.png' alt='Доставка' />
+        <img src={wb} alt='Доставка' />
       </div>
       <div className='location-content-wrapper'>
         <div className='location-content'>
