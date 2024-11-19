@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 import './../Styles/Banner.css';
-import ban1 from '/banner_2.jpg'
-import ban2 from '/banner_4.jpg'
-import ban3 from '/banner_5.jpg'
-import arrow from '/back_1.svg'
+import ban1 from 'public/banner_2.jpg'
+import ban2 from 'public/banner_4.jpg'
+import ban3 from 'public/banner_5.jpg'
+import arrow from 'public/back_1.svg'
 
 
 const slides = [
