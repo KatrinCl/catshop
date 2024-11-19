@@ -17,23 +17,23 @@ const Navbar = () => {
     return (
         <div className='nav'>
             <div className='nav-top'>
-                <Link to='/'><img src="/cat.svg" alt="" className='logo' /></Link>
+                <Link to='/'><img src="./public/cat.svg" alt="" className='logo' /></Link>
                 <SearchBar />
                 <ul>
                     <li>
-                        <Link to='/login'><img src='/user.svg' alt='' className='user' /></Link>
+                        <Link to='/login'><img src='./public/user.svg' alt='' className='user' /></Link>
                     </li>
                     <li>
-                        <Link to='/cart'><img src='/cart.svg' alt='' className='cartI' /><span className='cart-count'>{getTotalCartItems()}</span></Link>
+                        <Link to='/cart'><img src='./public/cart.svg' alt='' className='cartI' /><span className='cart-count'>{getTotalCartItems()}</span></Link>
                     </li>
                     <li>
                         <Link to='/addressdelivery'>
                             <div className='active'>
-                                <img src='/location.svg' alt='' className='location' />
+                                <img src='./public/location.svg' alt='' className='location' />
                             </div>
                         </Link>
                     </li>
-                    <li><img src='/menu.svg' alt='' className='menu1' onClick={toggleMenu} /></li>
+                    <li><img src='./public/menu.svg' alt='' className='menu1' onClick={toggleMenu} /></li>
                 </ul>
             </div>
             {menu && (
