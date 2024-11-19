@@ -1,7 +1,6 @@
-import p1 from '/cream.jpg'
-import p2 from '/mix.jpg'
-import p3 from '/mixit.jpg'
-import p4 from '/xiaomi.jpg'
+import p1 from './cream.jpg'
+import p2 from './mix.jpg'
+import p3 from './mixit.jpg'
 
 
 let special_offer = [
