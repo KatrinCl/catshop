@@ -185,6 +185,12 @@
     .map-container1 {
       height: 250px;
     }
+    .courier-inputs input{
+      font-size: 14px;
+    }
+    .courier-del button{
+      font-size: 14px;
+    }
   }
   
   @media (max-width: 440px) {

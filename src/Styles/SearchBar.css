@@ -87,3 +87,13 @@
     }
 
 }
+@media (max-width: 340px) {
+    .search-form {
+        max-width: 50%;
+    }
+    .search-input {
+        font-size: 12px;
+        height: 35px;
+        padding: 5px;
+    }
+}

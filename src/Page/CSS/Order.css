@@ -170,11 +170,7 @@
     .pickup-methods button, .payment-options button {
       padding: 4px 12px;
     }
-  
-    .order-button button {
-      padding: 6px;
     }
-  }
   
   @media (max-width: 361px) {
     .order-form {
@@ -189,12 +185,7 @@
     .order-summary p {
       font-size: 14px;
     }
-  
-    .order-button button {
-      font-size: 14px;
-      padding: 4px;
-    }
-    .pickup-address p{
+      .pickup-address p{
       font-size: 14px;
     }
   }
