@@ -148,7 +148,7 @@
 
   .map-container {
     width: 100%;
-    height: 300px;
+    height: 400px;
   }
 }
 
@@ -164,7 +164,7 @@
     padding: 7px 12px;
   }
   .map-container {
-    height: 250px;
+    height: 350px;
   }
 }
 
@@ -178,7 +178,7 @@
     padding: 7px 10px;
   }
   .map-container {
-    height: 230px;
+    height: 350px;
   }
 }
 
@@ -196,8 +196,5 @@
   .location-list .delivery-tabs button {
     font-size: 11px;
     padding: 7px 8px;
-  }
-  .map-container {
-    height: 200px;
   }
 }

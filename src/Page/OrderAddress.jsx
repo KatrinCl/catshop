@@ -3,11 +3,11 @@ import { YMaps, Map, Placemark, SearchControl } from 'react-yandex-maps';
 import { useNavigate } from 'react-router-dom';
 import './CSS/OrderAddress.css';
 import { ShopContext } from '../Context/ShopContext';
+import pin from '/pin.svg';
 
-const OrderOrder = () => {
+const OrderAddress = () => {
   const [deliveryMethod, setDeliveryMethod] = useState('pickup');
-
-  const { setPickupOrder } = useContext(ShopContext);
+  const { setPickupAddress } = useContext(ShopContext); // Получаем функцию для установки адреса
   const navigate = useNavigate();
 
   const deliveryPoints = [
@@ -17,65 +17,78 @@ const OrderOrder = () => {
   ];
 
   const [mapCenter, setMapCenter] = useState([56.9976, 40.9736]);
+  const [selectedAddress, setSelectedAddress] = useState(null); // Для выбранного адреса
   const [courierOrder, setCourierOrder] = useState('');
   const [houseNumber, setHouseNumber] = useState('');
   const [apartment, setApartment] = useState('');
   const [entrance, setEntrance] = useState('');
   const [intercom, setIntercom] = useState('');
 
-  const handlePointClick = (coordinates, Order) => {
+  const handlePointClick = (coordinates, address) => {
     setMapCenter(coordinates);
-    setPickupOrder(Order);
-    navigate('/order', { state: { Order, deliveryMethod: 'pickup' } });
+    setSelectedAddress(address); // Устанавливаем выбранный адрес
+    navigate('/order', { state: { address, deliveryMethod: 'pickup' } }); // Передаем данные
+    setPickupAddress(address); // Устанавливаем адрес в контексте
   };
 
-  const handleCourierOrderSelect = () => {
-    navigate('/order', {
-      state: {
-        Order: courierOrder,
-        deliveryMethod: 'courier',
-        details: { houseNumber, apartment, entrance, intercom }
-      }
-    });
+  const handleSaveCourierAddress = () => {
+    if (courierOrder) {
+      navigate('/order', {
+        state: {
+          address: `${courierOrder}, дом: ${houseNumber}, кв: ${apartment}`,
+          deliveryMethod: 'courier',
+        },
+      });
+    } else {
+      alert('Выберите или укажите адрес!');
+    }
   };
 
   return (
-    <div className='Order-location'>
-      <div className='location-content-wrapper1'>
-        <div className='location-content1'>
+    <div className="Order-location">
+      <div className="location-content-wrapper1">
+        <div className="location-content1">
           <div className="location-list1">
             <div className="delivery-tabs1">
               <button
                 className={deliveryMethod === 'pickup' ? 'active' : ''}
-                onClick={() => setDeliveryMethod('pickup')}
+                onClick={() =>
+                  setDeliveryMethod('pickup')}
               >
                 Пункт выдачи
               </button>
               <button
                 className={deliveryMethod === 'courier' ? 'active' : ''}
-                onClick={() => setDeliveryMethod('courier')}
+                onClick={() =>
+                  setDeliveryMethod('courier')}
               >
                 Курьером
               </button>
             </div>
 
-            {deliveryMethod === 'pickup' ? (
+            {selectedAddress ? (
+              <div className="selected-address">
+                <p>Выбранный адрес: {selectedAddress}</p>
+                <button onClick={handleSaveAddress}>Сохранить адрес</button>
+              </div>
+            ) : deliveryMethod === 'pickup' ? (
               <ul>
                 {deliveryPoints.map((point) => (
-                  <li key={point.id} onClick={() => handlePointClick(point.coordinates, point.order)}>
+                  <li
+                    key={point.id}
+                    onClick={() => handlePointClick(point.coordinates, point.Order)}
+                  >
                     {point.Order}
                   </li>
                 ))}
               </ul>
             ) : (
               <div className="courier-Order-input">
-                {!courierOrder && (
-                  <p>Выберите адрес на карте или найдите его с помощью поиска</p>
-                )}
+                {!courierOrder && <p>Выберите адрес на карте или найдите его с помощью поиска</p>}
                 {courierOrder && (
-                  <div className='courier-del'>
+                  <div className="courier-del">
                     <p>Адрес: {courierOrder}</p>
-                    <div className='courier-inputs'>
+                    <div className="courier-inputs">
                       <input
                         type="text"
                         placeholder="Номер дома"
@@ -101,20 +114,22 @@ const OrderOrder = () => {
                         onChange={(e) => setIntercom(e.target.value)}
                       />
                     </div>
-                    <button onClick={handleCourierOrderSelect}>Подтвердить адрес</button>
+                    <button onClick={handleSaveCourierAddress}>
+                      Подтвердить адрес
+                    </button>
                   </div>
                 )}
               </div>
             )}
           </div>
 
-          <div className='location-map1'>
-            <div className='map-container1'>
+          <div className="location-map1">
+            <div className="map-container1">
               <YMaps query={{ apikey: '45aa1665-bac1-4779-a9e5-48c7794263fd' }}>
                 <Map
                   state={{ center: mapCenter, zoom: 13 }}
-                  width='100%'
-                  height='500px'
+                  width="100%"
+                  height="500px"
                   options={{ suppressMapOpenBlock: true }}
                 >
                   {deliveryMethod === 'pickup' &&
@@ -124,16 +139,20 @@ const OrderOrder = () => {
                         geometry={point.coordinates}
                         options={{
                           iconLayout: 'default#image',
-                          iconImageHref: '/pin.svg',
+                          iconImageHref: pin,
                           iconImageSize: [30, 42],
                           iconImageOffset: [-15, -42],
                         }}
                         onClick={() => handlePointClick(point.coordinates, point.Order)}
                       />
-                    ))
-                  }
+                    ))}
                   <SearchControl
-                    options={{ float: 'right', size: 'large', position: { top: '10px', right: '10px' }, placeholderContent: 'Введите адрес' }}
+                    options={{
+                      float: 'right',
+                      size: 'large',
+                      position: { top: '10px', right: '10px' },
+                      placeholderContent: 'Введите адрес',
+                    }}
                     onResultSelect={(event) => {
                       const result = event.get('target').getResultsArray()[0];
                       if (result) {
@@ -154,4 +173,4 @@ const OrderOrder = () => {
   );
 };
 
-export default OrderOrder;
+export default OrderAddress;

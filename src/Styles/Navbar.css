@@ -240,6 +240,7 @@
     .nav ul {
         gap: 10px;
         font-size: 16px;
+        margin-right: 10px;
     }
 
     .logo {
@@ -310,8 +311,9 @@
 
 @media (max-width: 440px) {
     .nav ul {
-        gap: 0px;
+        gap: 5px;
         margin-top: -2px;
+        margin-right: 5px;
     }
 
     .logo {
@@ -364,6 +366,10 @@
     }    
 }
 @media (max-width: 398px) {
+    .nav ul{
+        margin-right: 10px;
+        gap: 0;
+    }
     .cart-count1 {
         right: 265px; 
     }    
@@ -371,6 +377,10 @@
 
 
 @media (max-width: 361px) {
+    .nav ul{
+        margin-right: 10px;
+        gap: 0;
+    }
     .cart-count1 {
         right: 235px; 
     }    

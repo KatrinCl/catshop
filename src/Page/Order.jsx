@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './CSS/Order.css';
 import { ShopContext } from '../Context/ShopContext';
 import { Link, useLocation } from 'react-router-dom';
@@ -7,14 +7,26 @@ const Order = () => {
   const location = useLocation();
   const { cartItems, all_product } = useContext(ShopContext);
 
-  const [pickupAddress, setPickupAddress] = useState(location.state?.deliveryMethod === 'pickup' ? location.state?.address : 'Иваново, Микрорайон Видный 4');
-  const [courierAddress, setCourierAddress] = useState(location.state?.deliveryMethod === 'courier' ? location.state?.address : '');
-  const [deliveryMethod, setDeliveryMethod] = useState(location.state?.deliveryMethod || 'pickup');
+  const [pickupAddress, setPickupAddress] = useState('');
+  const [courierAddress, setCourierAddress] = useState('');
+  const [deliveryMethod, setDeliveryMethod] = useState('pickup');
   const [paymentMethod, setPaymentMethod] = useState('upon_receipt');
+
+  useEffect(() => {
+    if (location.state) {
+      const { address, deliveryMethod } = location.state;
+      if (deliveryMethod === 'pickup') {
+        setPickupAddress(address);
+      } else if (deliveryMethod === 'courier') {
+        setCourierAddress(address);
+      }
+      setDeliveryMethod(deliveryMethod);
+    }
+  }, [location.state]);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
-    all_product.forEach(product => {
+    all_product.forEach((product) => {
       if (cartItems[product.id] > 0) {
         totalAmount += product.new_price * cartItems[product.id];
       }
@@ -24,7 +36,7 @@ const Order = () => {
 
   const getTotalDiscount = () => {
     let totalDiscount = 0;
-    all_product.forEach(product => {
+    all_product.forEach((product) => {
       if (cartItems[product.id] > 0) {
         totalDiscount += (product.old_price - product.new_price) * cartItems[product.id];
       }
@@ -45,7 +57,7 @@ const Order = () => {
             <Link
               to={{
                 pathname: '/orderaddress',
-                state: { setPickupAddress },
+                state: { deliveryMethod: 'pickup' },
               }}
             >
               <button
@@ -59,7 +71,7 @@ const Order = () => {
             <Link
               to={{
                 pathname: '/orderaddress',
-                state: { setCourierAddress, deliveryMethod: 'courier' },
+                state: { deliveryMethod: 'courier' },
               }}
             >
               <button
@@ -73,7 +85,7 @@ const Order = () => {
 
           {deliveryMethod === 'pickup' && (
             <div className='pickup-address'>
-              <p>{pickupAddress}</p>
+              <p>{pickupAddress || 'Не выбран'}</p>
               <p className='delivery-free'>Доставка 0 ₽</p>
               <p>Послезавтра</p>
             </div>
@@ -81,7 +93,7 @@ const Order = () => {
 
           {deliveryMethod === 'courier' && (
             <div className='pickup-address'>
-              <p>{courierAddress}</p>
+              <p>{courierAddress || 'Не выбран'}</p>
               <p>Стоимость доставки: 150 ₽</p>
               <p>Послезавтра</p>
             </div>
