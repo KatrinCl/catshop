@@ -200,8 +200,8 @@
         margin-left: 20px;
     }
     .shopcategory-dropdown-menu {
-        min-width: 100px;
-        padding: 5px;
+        min-width: 80px;
+        padding: 0px;
     }
     .shopcategory-price-dropdown {
         padding: 10px;
@@ -227,7 +227,7 @@
 
     .shopcategory-filters-container {
         gap: 0px;
-        padding: 0 2px;
+        padding: 0;
     }
 
     .shopcategory-dropdown {
@@ -239,7 +239,7 @@
         margin-left: 3px;
     } 
     .shopcategory-dropdown-menu {
-        padding: 5px;
+        padding: 2px;
         top: 30px;
     }
     .shopcategory-price-dropdown {

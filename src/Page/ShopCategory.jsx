@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import './CSS/ShopCategory.css';
 import { ShopContext } from '../Context/ShopContext.jsx';
 import Item from '../Components/Item.jsx';
-import dropdown from '/dropdown_icon.png'
+import dropdown from '/dropdown_icon.png';
 
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext);
@@ -10,21 +10,17 @@ const ShopCategory = (props) => {
   const [sortOption, setSortOption] = useState('По популярности');
   const [colorOption, setColorOption] = useState('Цвет');
 
-  // Состояния для диапазона цены, храним временно как строки
   const [minPriceInput, setMinPriceInput] = useState('');
   const [maxPriceInput, setMaxPriceInput] = useState('');
 
-  // Состояния для применения фильтра после нажатия кнопки "Готово"
   const [appliedMinPrice, setAppliedMinPrice] = useState(0);
   const [appliedMaxPrice, setAppliedMaxPrice] = useState(100000);
 
   const [showPriceDropdown, setShowPriceDropdown] = useState(false);
-  const [showSortDropdown, setShowSortDropdown] = useState(false); // Для сортировки
-  const [showColorDropdown, setShowColorDropdown] = useState(false); // Для фильтра по цвету
+  const [showSortDropdown, setShowSortDropdown] = useState(false);
+  const [showColorDropdown, setShowColorDropdown] = useState(false);
 
-  // Функция для применения фильтра по цене
   const handlePriceFilter = () => {
-    // Конвертируем строковые значения в числа
     const minPrice = parseInt(minPriceInput) || 0;
     const maxPrice = parseInt(maxPriceInput) || 100000;
 
@@ -33,7 +29,6 @@ const ShopCategory = (props) => {
     setShowPriceDropdown(false);
   };
 
-  // Логика сортировки
   const sortProducts = (products) => {
     switch (sortOption) {
       case 'По возрастанию цены':
@@ -41,45 +36,49 @@ const ShopCategory = (props) => {
       case 'По убыванию цены':
         return products.sort((a, b) => b.new_price - a.new_price);
       case 'По рейтингу':
-        // Здесь должна быть сортировка по рейтингу (если есть соответствующие данные)
-        return products;
+        return products; // Здесь должна быть сортировка по рейтингу
       case 'По новинкам':
-        // Можно сортировать по дате добавления, если есть соответствующее поле
-        return products;
+        return products; // Можно сортировать по дате добавления
       case 'Сначала выгодные':
-        // Можно отсортировать по соотношению цены или скидки
-        return products;
+        return products; // Можно отсортировать по соотношению цены или скидки
       default:
         return products;
     }
   };
 
-  // Фильтрация товаров
   const filteredProducts = all_product.filter((item) => {
-    // Фильтр по категории
     const matchesCategory = props.category === item.category;
-
-    // Фильтр по цене
     const matchesPrice = item.new_price >= appliedMinPrice && item.new_price <= appliedMaxPrice;
-
-    // Фильтр по цвету (если был выбран цвет)
     const matchesColor = colorOption === 'Цвет' || item.colors.some(color => color.name === colorOption);
 
     return matchesCategory && matchesPrice && matchesColor;
   });
 
-  // Применение сортировки к отфильтрованным товарам
   const sortedProducts = sortProducts(filteredProducts);
+
+  const toggleSortDropdown = () => {
+    setShowSortDropdown(!showSortDropdown);
+    setShowPriceDropdown(false); // Закрываем другие дропдауны
+    setShowColorDropdown(false);
+  };
+
+  const togglePriceDropdown = () => {
+    setShowPriceDropdown(!showPriceDropdown);
+    setShowSortDropdown(false); // Закрываем другие дропдауны
+    setShowColorDropdown(false);
+  };
+
+  const toggleColorDropdown = () => {
+    setShowColorDropdown(!showColorDropdown);
+    setShowSortDropdown(false); // Закрываем другие дропдауны
+    setShowPriceDropdown(false);
+  };
 
   return (
     <div className='shop-category'>
       <div className="shopcategory-filters-container">
         {/* Сортировка */}
-        <div
-          className="shopcategory-dropdown"
-          onMouseEnter={() => setShowSortDropdown(true)}
-          onMouseLeave={() => setShowSortDropdown(false)}
-        >
+        <div className="shopcategory-dropdown" onClick={toggleSortDropdown}>
           <span>{sortOption}</span> <img src={dropdown} alt='' />
           {showSortDropdown && (
             <ul className="shopcategory-dropdown-menu">
@@ -93,105 +92,97 @@ const ShopCategory = (props) => {
                 По возрастанию цены
               </li>
               <li onClick={() => { setSortOption('По убыванию цены'); setShowSortDropdown(false); }}>
-                По убыванию цены
-              </li>
-              <li onClick={() => { setSortOption('По новинкам'); setShowSortDropdown(false); }}>
-                По новинкам
-              </li>
-              <li onClick={() => { setSortOption('Сначала выгодные'); setShowSortDropdown(false); }}>
-                Сначала выгодные
-              </li>
-            </ul>
-          )}
-        </div>
-
-        {/* Фильтр по цене */}
-        <div
-          className="shopcategory-dropdown"
-          onMouseEnter={() => setShowPriceDropdown(true)}
-          onMouseLeave={() => setShowPriceDropdown(false)}
-        >
-          <span>Цена, ₽</span> <img src={dropdown} alt='' />
-          {showPriceDropdown && (
-            <div className="shopcategory-price-dropdown">
-              <div className="shopcategory-price-inputs">
-                <div>
-                  <label>От</label>
-                  <input
-                    type="text"
-                    value={minPriceInput}
-                    onChange={(e) => setMinPriceInput(e.target.value)}
-                    placeholder="0"
-                  />
-                </div>
-                <div>
-                  <label>До</label>
-                  <input
-                    type="text"
-                    value={maxPriceInput}
-                    onChange={(e) => setMaxPriceInput(e.target.value)}
-                    placeholder="100000"
-                  />
-                </div>
-              </div>
-              <button onClick={handlePriceFilter}>Готово</button>
-            </div>
-          )}
-        </div>
-
-        {/* Фильтр по цвету */}
-        <div
-          className="shopcategory-dropdown"
-          onMouseEnter={() => setShowColorDropdown(true)}
-          onMouseLeave={() => setShowColorDropdown(false)}
-        >
-          <span>{colorOption}</span> <img src={dropdown} alt='' />
-          {showColorDropdown && (
-            <ul className="shopcategory-dropdown-menu">
-              <li onClick={() => { setColorOption('Красный'); setShowColorDropdown(false); }}>
-                Красный
-              </li>
-              <li onClick={() => { setColorOption('Синий'); setShowColorDropdown(false); }}>
-                Синий
-              </li>
-              <li onClick={() => { setColorOption('Зеленый'); setShowColorDropdown(false); }}>
-                Зеленый
-              </li>
-              <li onClick={() => { setColorOption('Белый'); setShowColorDropdown(false); }}>
-                Белый
-              </li>
-              <li onClick={() => { setColorOption('Черный'); setShowColorDropdown(false); }}>
-                Черный
-              </li>
-              <li onClick={() => { setColorOption('Розовый'); setShowColorDropdown(false); }}>
-                Розовый
-              </li>
-              <li onClick={() => { setColorOption('Бежевый'); setShowColorDropdown(false); }}>
-                Бежевый
-              </li>
-              <li onClick={() => { setColorOption('Коричневый'); setShowColorDropdown(false); }}>
-                Коричневый
-              </li>
-            </ul>
-          )}
-        </div>
-      </div>
-
-      {/* Список отфильтрованных и отсортированных продуктов */}
-      <div className="shopcategory-products">
-        {sortedProducts.map((item, i) => (
-          <Item
-            key={i}
-            id={item.id}
-            name={item.name}
-            image={item.image}
-            new_price={item.new_price}
-            old_price={item.old_price}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default ShopCategory;
+                              По убыванию цены
+                              </li>
+                              <li onClick={() => { setSortOption('По новинкам'); setShowSortDropdown(false); }}>
+                                По новинкам
+                              </li>
+                              <li onClick={() => { setSortOption('Сначала выгодные'); setShowSortDropdown(false); }}>
+                                Сначала выгодные
+                              </li>
+                            </ul>
+                          )}
+                        </div>
+                
+                        {/* Фильтр по цене */}
+                        <div className="shopcategory-dropdown" onClick={togglePriceDropdown}>
+                          <span>Цена, ₽</span> <img src={dropdown} alt='' />
+                          {showPriceDropdown && (
+                            <div className="shopcategory-price-dropdown">
+                              <div className="shopcategory-price-inputs">
+                                <div>
+                                  <label>От</label>
+                                  <input
+                                    type="text"
+                                    value={minPriceInput}
+                                    onChange={(e) => setMinPriceInput(e.target.value)}
+                                    placeholder="0"
+                                  />
+                                </div>
+                                <div>
+                                  <label>До</label>
+                                  <input
+                                    type="text"
+                                    value={maxPriceInput}
+                                    onChange={(e) => setMaxPriceInput(e.target.value)}
+                                    placeholder="100000"
+                                  />
+                                </div>
+                              </div>
+                              <button onClick={handlePriceFilter}>Готово</button>
+                            </div>
+                          )}
+                        </div>
+                
+                        {/* Фильтр по цвету */}
+                        <div className="shopcategory-dropdown" onClick={toggleColorDropdown}>
+                          <span>{colorOption}</span> <img src={dropdown} alt='' />
+                          {showColorDropdown && (
+                            <ul className="shopcategory-dropdown-menu">
+                              <li onClick={() => { setColorOption('Красный'); setShowColorDropdown(false); }}>
+                                Красный
+                              </li>
+                              <li onClick={() => { setColorOption('Синий'); setShowColorDropdown(false); }}>
+                                Синий
+                              </li>
+                              <li onClick={() => { setColorOption('Зеленый'); setShowColorDropdown(false); }}>
+                                Зеленый
+                              </li>
+                              <li onClick={() => { setColorOption('Белый'); setShowColorDropdown(false); }}>
+                                Белый
+                              </li>
+                              <li onClick={() => { setColorOption('Черный'); setShowColorDropdown(false); }}>
+                                Черный
+                              </li>
+                              <li onClick={() => { setColorOption('Розовый'); setShowColorDropdown(false); }}>
+                                Розовый
+                              </li>
+                              <li onClick={() => { setColorOption('Бежевый'); setShowColorDropdown(false); }}>
+                                Бежевый
+                              </li>
+                              <li onClick={() => { setColorOption('Коричневый'); setShowColorDropdown(false); }}>
+                                Коричневый
+                              </li>
+                            </ul>
+                          )}
+                        </div>
+                      </div>
+                
+                      {/* Список отфильтрованных и отсортированных продуктов */}
+                      <div className="shopcategory-products">
+                        {sortedProducts.map((item, i) => (
+                          <Item
+                            key={i}
+                            id={item.id}
+                            name={item.name}
+                            image={item.image}
+                            new_price={item.new_price}
+                            old_price={item.old_price}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  );
+                };
+                
+                export default ShopCategory;
