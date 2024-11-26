@@ -380,21 +380,10 @@
     .nav ul{
         margin-right: 10px;
         gap: 0;
+        margin-top: -5px;
     }
     .cart-count1 {
         right: 235px; 
-    }    
-    .location {
-        width: 30px;
-        height: 30px;
-        margin-right: 15px;
-        margin-left: 10px;
-    }
-}
-
-@media (max-width: 340px) {
-    .cart-count1 {
-        right: 215px; 
     }    
     .location {
         width: 25px;
@@ -402,9 +391,12 @@
         margin-right: 15px;
         margin-left: 15px;
     }
-    .nav ul {
-        margin-top: -5px;
-    }
+}
+
+@media (max-width: 340px) {
+    .cart-count1 {
+        right: 215px; 
+    }    
     .dropdown ul{
         gap: 0.5px;
     }

@@ -81,19 +81,27 @@
     .search-form {
         max-width: 55%;
     }
-
     .search-button {
         display: none;
     }
-
 }
-@media (max-width: 340px) {
+@media (max-width: 361px) {
     .search-form {
-        max-width: 50%;
+        max-width: 55%;
     }
     .search-input {
         font-size: 12px;
         height: 35px;
         padding: 5px;
+    }
+    .search-button {
+        display: none;
+    }
+
+}
+
+@media (max-width: 340px) {
+    .search-form {
+        max-width: 50%;
     }
 }
